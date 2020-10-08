@@ -1,4 +1,5 @@
 /*******************************************************************/
+/*******************************************************************/
 /* CT60A2500 C-ohjelmoinnin perusteet
  * Otsikkotiedot: L06_T1
  * Tekijä: Tero Lompolo
@@ -10,29 +11,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef enum {FALSE, TRUE} Boolean;
-
-typedef struct Solmu {
+struct Solmu {
     int luku;
     struct Solmu *seuraava;
-} Lista;
+}; 
+
+typedef struct Solmu Lista; 
 
 int main() {
-    Lista *alku, *loppu, *p;
-    int luku;
-    Boolean jatka = TRUE;
+    Lista *alku = NULL, *loppu = NULL, *p = NULL;
+    int luku = 1;
 
     printf("Anna listan luvut.\n");
-    while (jatka)
+    while (luku != 0)
     {
         printf("Anna positiivinen kokonaisluku, 0 lopettaa: ");
         scanf("%d", &luku);
-        if (luku == 0)
-            jatka = FALSE;
-        else {
+        if (luku != 0) {
             if((p = (Lista*)malloc(sizeof(Lista))) == NULL){
                 perror("Muistin varaus epäonnistui.");
-                exit(0);
+                exit(1);
             }
 
             p->luku = luku;
