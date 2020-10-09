@@ -1,33 +1,26 @@
 /*******************************************************************/
+/*******************************************************************/
 /* CT60A2500 C-ohjelmoinnin perusteet
- * Otsikkotiedot: L05_T1
+ * Otsikkotiedot: L07_T1: program.c
  * Tekijä: Tero Lompolo
  * Opiskelijanumero: 0615760
- * Päivämäärä: 1.10.2020
+ * Päivämäärä: 9.10.2020
  * Yhteistyö ja lähteet, nimi ja yhteistyön muoto:
  */
 /*******************************************************************/
 #include <stdio.h>
-#include <stdlib.h>
+#include "io.h"
 
-int nelio(int luku){
-    return luku * luku;
-}
+#define KOKO 10
 
-int main(int argc, char *argv[]) {
-    int luku;
+int main() {
+    int lista[KOKO];
+    int koko = KOKO, summa = 0;
 
-    if (argc < 2)
-    {
-        perror("Et antanut lukua!");
-        exit(1);
-    }
-
-    luku = atoi(argv[1]);
-
-    printf("Luku on %d.\n", luku);
-    printf("Luvun neliö on %d.\n", nelio(luku));
-
+    printf("Askelanalyysi\n");
+    summa = lue_askeleet_listaan(lista, koko);
+    tulosta_lista(lista, koko);
+    printf("Askelia yhteensä: %d\n", summa);
     return 0;
 }
 /*******************************************************************/
